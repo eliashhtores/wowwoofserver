@@ -24,7 +24,7 @@ router.post('/create-checkout-session', async (req, res) => {
                 price_data: {
                     currency: "usd",
                     product_data: {
-                        name: "Cita con Wow Woof Dog Grooming (Pago no reembolsable)",
+                        name: "Appointment at Wow Woof Dog Grooming (Non-refundable payment)",
                     },
                     unit_amount: 500,
                 },
