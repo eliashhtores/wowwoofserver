@@ -1,5 +1,6 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const app = express();
 const router = express.Router();
 const Appointment = require('../models/appointment');
 
@@ -14,21 +15,20 @@ router.all('*', function (req, res, next) {
 });
 
 // End point to Stripe Checkout
-// const stripe = require('stripe')(process.env.STRIPE_KEY);
+const stripe = require('stripe')(process.env.STRIPE_KEY);
 router.post('/create-checkout-session', async (req, res) => {
-    const quantity = req.body.data;
     const session = await stripe.checkout.sessions.create({
         payment_method_types: ["card"],
         line_items: [
             {
                 price_data: {
-                    currency: "mxn",
+                    currency: "usd",
                     product_data: {
-                        name: "Cita en Ariah Studio (Pago no reembolsable)",
+                        name: "Cita con Wow Woof Dog Grooming (Pago no reembolsable)",
                     },
-                    unit_amount: 5000,
+                    unit_amount: 500,
                 },
-                quantity: quantity,
+                quantity: 1,
             },
         ],
         mode: "payment",
