@@ -12,6 +12,16 @@ const appointmentSchema = new mongoose.Schema({
     email: {
         type: String
     },
+    date:
+    {
+      type: String,
+      required: true
+    },
+    time:
+    {
+      type: String,
+      required: true
+    },
     services: {
         type: Array,
         required: true
